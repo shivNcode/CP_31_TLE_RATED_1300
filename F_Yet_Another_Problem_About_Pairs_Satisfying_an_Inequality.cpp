@@ -19,6 +19,7 @@ void solve() {
     for(ll i=0;i<n;i++){
         cin>>arr[i];
         if(i+1>arr[i]){
+            
             val.push_back(arr[i]);
             idx.push_back(i+1);
         }
