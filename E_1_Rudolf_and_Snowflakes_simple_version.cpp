@@ -12,7 +12,22 @@ using namespace std;
 
 
 void solve() {
-
+    ll n;
+    cin>>n;
+    for(ll k = 2;k<=1e3;k++){
+        ll val = k*k;
+        ll sum = k + (k*k);
+        for(ll i=1;i<=32;i++){
+            if(sum==n-1){
+                cout<<"YES"<<endl;
+                return;
+            }
+            val*=k;
+            sum+=val;
+        }
+    }
+    cout<<"NO"<<endl;
+    return;
 }
 
 int main() {
@@ -21,7 +36,7 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        solve();
+         solve();
     }
 
     return 0;
