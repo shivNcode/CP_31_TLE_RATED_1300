@@ -1,2 +1,2 @@
 # CP_31_TLE_RATED_1300
-There are the set of question for CP from TLE 1300 rated sheet.
+These are the set of the question of the TLS 1300 reted sheet.
