@@ -2,30 +2,32 @@
 #include <vector>
 #include <algorithm>
 #include <deque>
+#include <random>
+#include <chrono>
 using namespace std;
 
-#define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
-#define endl '\n'
-#define all(x) (x).begin(), (x).end()
-#define rep(i, a, b) for (int i = a; i < b; i++)
 #define int long long
+#define INF (int)1e18
 
+mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
-void solve() {
-
+void Solve() {
+    // write solution here
 }
 
-int_fast32_t main() {
-    fastio;
+int32_t main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    int t;
+    int t = 1;
     cin >> t;
     while (t--) {
-        solve();
+        Solve();
     }
 
     return 0;
 }
+
 
 /*
 Notes:
