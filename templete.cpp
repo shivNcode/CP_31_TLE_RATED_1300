@@ -8,14 +8,14 @@ using namespace std;
 #define endl '\n'
 #define all(x) (x).begin(), (x).end()
 #define rep(i, a, b) for (int i = a; i < b; i++)
-#define ll long long
+#define int long long
 
 
 void solve() {
 
 }
 
-int main() {
+int_fast32_t main() {
     fastio;
 
     int t;
