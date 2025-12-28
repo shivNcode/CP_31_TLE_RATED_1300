@@ -15,7 +15,7 @@ using namespace std;
 mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
 void Solve() {
-    // write solution here
+   
 }
 
 int32_t main() {
