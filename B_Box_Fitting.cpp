@@ -78,7 +78,39 @@ using namespace std;
 
 
 void solve() {
-    
+    int n , w;
+    cin>>n>>w;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr.begin() , arr.end());
+    deque<int> dq;
+    for(auto it:arr) dq.push_back(it);
+    int ans = 0;
+    while(!dq.empty()){
+        int val = w;
+        int s = dq.size();
+        //cout<<s<<endl;
+        for(int i=0;i<s;i++){
+            int curr = dq.back();
+            //cout<<curr<<" ";
+            dq.pop_back();
+            if(val>0 && curr<=val){
+                //cout<<"."<<curr<<". ";
+                val-=curr;
+            }
+            else{
+                //cout<<"|"<<curr<<"| ";
+                dq.push_front(curr);
+            }
+            //if(val==0) break;
+            //cout<<"."<<val<<". ";
+        }
+        //cout<<'\n';
+        ans++;
+    }
+    cout<<ans<<endl;
 }
 
 int main() {
