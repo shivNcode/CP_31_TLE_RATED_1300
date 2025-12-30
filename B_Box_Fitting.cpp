@@ -1,128 +1,61 @@
-/*
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <deque>
+#include <random>
+#include <chrono>
 #include <unordered_map>
+#include <map>
+#include <stack>
 using namespace std;
 
-#define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
-#define endl '\n'
-#define all(x) (x).begin(), (x).end()
-#define rep(i, a, b) for (int i = a; i < b; i++)
-#define ll long long
+#define int long long
+#define INF (int)1e18
 
+mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
-void solve() {
-    ll n , w;
+void Solve() {
+    int n , w;
     cin>>n>>w;
-    vector<ll> arr(n);
-    unordered_map<ll,ll> mpp;
-    for(ll i=0;i<n;i++){
+    vector<int> arr(n) , temp(21 , 0);
+    for(int i=0;i<n;i++){
         cin>>arr[i];
-        mpp[arr[i]]++;
+        int val = log2(arr[i]);
+        temp[val]++;
     }
-    // for(auto it:mpp){
-    //     cout<<it.first<<" "<<it.second<<endl;
-    // }
-    ll h =0 ;
-    int a = 0;
-    while(true){
-        //cout<<"1";
-        cout<<h<<" :";
-        bool comp = true;
-        ll val = w;
-        for(auto it: mpp){
-            while(val>=it.first && mpp[it.first]!=0){
-                val-=it.first;
-                mpp[it.first]--;
-                cout<<it.first<<" ";
-                comp = false;
+    int i = 0;
+    int h = 0;
+    while(i<n){
+        int v = w;
+        for(int j=20;j>=0;j--){
+            while(temp[j]>0 && (1 << j)<=v){
+                v-=(1<<j);
+                temp[j]--;
+                i++;
             }
-            if(val==0) break;
         }
-        cout<<endl;a++;
-        if(comp) break;
         h++;
+        //i++;
     }
     cout<<h<<endl;
 }
 
-int main() {
-    fastio;
+int32_t main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    int t;
+    int t = 1;
     cin >> t;
     while (t--) {
-        solve();
+        Solve();
     }
 
     return 0;
 }
 
 
-
+/*
+Notes:
+good question and important thing is to handle the all n element for this we use the hash and store thr all the the element if the array with there log value that make our work easy becase then we complete iterate all the value and sice all the value are the power of 2 so please go in our desired order
 */
-
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <deque>
-using namespace std;
-
-#define fastio ios_base::sync_with_stdio(false); cin.tie(NULL);
-#define endl '\n'
-#define all(x) (x).begin(), (x).end()
-#define rep(i, a, b) for (int i = a; i < b; i++)
-#define ll long long
-
-
-void solve() {
-    int n , w;
-    cin>>n>>w;
-    vector<int> arr(n);
-    for(int i=0;i<n;i++){
-        cin>>arr[i];
-    }
-    sort(arr.begin() , arr.end());
-    deque<int> dq;
-    for(auto it:arr) dq.push_back(it);
-    int ans = 0;
-    while(!dq.empty()){
-        int val = w;
-        int s = dq.size();
-        //cout<<s<<endl;
-        for(int i=0;i<s;i++){
-            int curr = dq.back();
-            //cout<<curr<<" ";
-            dq.pop_back();
-            if(val>0 && curr<=val){
-                //cout<<"."<<curr<<". ";
-                val-=curr;
-            }
-            else{
-                //cout<<"|"<<curr<<"| ";
-                dq.push_front(curr);
-            }
-            //if(val==0) break;
-            //cout<<"."<<val<<". ";
-        }
-        //cout<<'\n';
-        ans++;
-    }
-    cout<<ans<<endl;
-}
-
-int main() {
-    fastio;
-
-    int t;
-    cin >> t;
-    while (t--) {
-        solve();
-    }
-
-    return 0;
-}
-
 
